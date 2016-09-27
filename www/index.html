@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>IR system demo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <script src="/min/bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/min/bundle.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,700'>
+  </head>
+  <body ng-app="application" ng-controller="RootController" ng-cloak layout="column">
+    <base href="/"/>
+    <md-toolbar layout="row" class="md-toolbar-tools">
+      <md-button class="menu md-icon-button" hide-gt-sm ng-click="toggleList()" aria-label="Show User List">
+        <md-icon>menu</md-icon>
+      </md-button>
+      <h1>IR demo app for Intel Edison.</h1>
+    </md-toolbar>
+    <div flex layout="row">
+      <md-sidenav
+        class="md-whiteframe-4dp"
+        md-is-locked-open="$mdMedia('gt-sm')"
+        md-component-id="left"
+        ng-click="toggleList()">
+        <md-list>
+          <md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
+          <md-list-item ng-repeat="item in sendList" ng-click="clickItem(item)">
+            <p>{{item.name}}</p>
+            <md-button class="menu md-icon-button md-secondary" ng-click="removeItem(item)" aria-label="remove"><md-icon>delete</md-icon></md-button>
+          </md-list-item>
+        </md-list>
+      </md-sidenav>
+      <md-content flex>
+        <div ui-view id="content"></div>
+      </md-content>
+    </div>
+  </body>
+</html>

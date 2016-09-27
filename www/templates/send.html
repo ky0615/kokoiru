@@ -1,0 +1,16 @@
+<div ng-show="!isUuid()">
+  <p>メニューから送信するものを選んでください。</p>
+</div>
+
+<div ng-show="data">
+  <h1>{{data.name}}</h1>
+  <md-content>
+    <section layout="row" layout-sm="column" layout-wrap>
+      <md-button class="md-raised md-primary" ng-click="send()">送信</md-button>
+      <md-button class="md-raised md-primary" ng-click="remove($event)">削除</md-button>
+    </section>
+    <section layout="row" layout-sm="column" layout-wrap>
+      <pre>{{data.data}}</pre>
+    </section>
+  </md-content>
+</div>
