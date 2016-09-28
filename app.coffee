@@ -2,11 +2,13 @@ express = require "express"
 path = require "path"
 gulp = require "./gulpfile"
 sequence = require "run-sequence"
+bodyParser = require "body-parser"
 
-exec = require('child_process').exec
+sequelize = require "./models"
 
 app = express()
 env = app.get "env"
+app.use bodyParser()
 
 app.use (req, res, next)->
   res.set "X-Powered-By", "NodeJS"
@@ -14,6 +16,13 @@ app.use (req, res, next)->
 
 static_base_path = path.join __dirname, 'www'
 app.use express.static static_base_path
+
+users = require "./router/users"
+app.get '/users', users.index
+app.get '/users/:id', users.show
+app.post '/users', users.create
+app.put '/users/:id', users.update
+app.delete '/users/:id', users.destroy
 
 app.get /^\/(js|css|min)\/(.*)/, (req, res)->
   res.status(404).send("404 Not found")
