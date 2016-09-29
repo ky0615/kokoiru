@@ -23,7 +23,6 @@
     "bootstrap": "^3.3.6",
     "firebase": "^3.3.0",
     "jquery": "^3.0.0",
-    "libpafe": "git+https://github.com/ky0615/node-libpafe.git",
     "sequelize": "^3.24.3"
   },
   "devDependencies": {
