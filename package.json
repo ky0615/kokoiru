@@ -1,9 +1,13 @@
 {
-  "name": "project",
-  "version": "0.0.0",
-  "description": "new Application",
-  "repository": {},
-  "author": "",
+  "name": "kokoiru",
+  "version": "0.0.1",
+  "description": "Check in! only touch the your sutudent card.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ky0615/kokoiru"
+  },
+  "author": "KoutarouYabe <idolm@ster.pw>",
+  "license": "MIT",
   "dependencies": {
     "angular": "^1.5.7",
     "angular-animate": "^1.5.7",
