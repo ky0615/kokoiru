@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) ->
     name: DataTypes.STRING
   }, classMethods: associate: (models) ->
     # associations can be defined here
+    # models.Names.hasOne models.Attend, as: "attends"
     return
   )
   Names
