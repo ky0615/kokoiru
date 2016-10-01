@@ -1,5 +1,7 @@
 angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap"]
-.config ($stateProvider, $locationProvider, $urlRouterProvider)->
+.config ($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider)->
+  $mdThemingProvider.theme('default').dark()
+
   $locationProvider.html5Mode true
   $stateProvider
   .state "top",

@@ -1,5 +1,31 @@
 <div id="main">
   <header id="header" class="">
     <h1>project was created!</h1>
+    <md-list id="userList">
+        <md-list-item
+            ng-repeat="(key, value) in users"
+            ng-click="attend(value)"
+            ng-class="{now: !value.leftFlag}"
+            class="userContent">
+            <!-- <pre>{{value|json}}</pre> -->
+            <h2>
+                <md-icon aria-label="user icon" ng-class="{enableIcon: value.leftFlag}" class="md-avatar-icon">person</md-icon>
+                 {{value.number}} - {{value.name}}
+            </h2>
+            <md-menu class="md-secondary">
+              <md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+                <md-icon>menu</md-icon>
+              </md-button>
+              <md-menu-content width="8">
+                <md-menu-item>
+                  <md-button ng-click="ctrl.redial($event)">
+                    <md-icon md-menu-align-target>exit_to_app</md-icon>
+                    入退出する
+                  </md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
+        </md-list-item>
+    </md-list>
   </header>
 </div>

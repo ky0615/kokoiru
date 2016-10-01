@@ -1,6 +1,4 @@
-angular.module("application").controller("RootController", ["$rootScope", "$scope", "$mdSidenav", "firebase", "$timeout", "$state", function($rootScope, $scope, $mdSidenav, firebase, $timeout, $state) {
-  var ref;
-  ref = firebase.database().ref("ir_demo/a");
+angular.module("application").controller("RootController", ["$rootScope", "$scope", "$mdSidenav", "$timeout", "$state", function($rootScope, $scope, $mdSidenav, $timeout, $state) {
   $scope.sendList = [];
   $scope.toggleList = function() {
     return $mdSidenav("left").toggle();
@@ -12,23 +10,8 @@ angular.module("application").controller("RootController", ["$rootScope", "$scop
       uuid: item.uuid
     });
   };
-  $scope.removeItem = function(item) {
+  return $scope.removeItem = function(item) {
     console.log("remove");
-    console.log(item);
-    return ref.child(item.uuid).remove().then(function(res) {
-      return console.log(res);
-    });
+    return console.log(item);
   };
-  return ref.on("value", function(res) {
-    $scope.sendList = [];
-    return $timeout(function() {
-      var k, ref1, v;
-      ref1 = res.val();
-      for (k in ref1) {
-        v = ref1[k];
-        $scope.sendList.push(v);
-      }
-      return console.log($scope.sendList);
-    });
-  });
 }]);

@@ -38,11 +38,10 @@ app.get "*", (req, res)->
 console.log "NODE_ENV is " + env
 app.set 'port', process.env.PORT || 1451
 
-
-# if env is "development"
-#   sequence "build", ->
-#     console.log "gulp build was successful"
-#     sequence "watch:assets", ->
+if env is "development"
+  sequence "build", ->
+    console.log "gulp build was successful"
+    sequence "watch:assets", ->
 # else
 #   sequence "build", ->
 #     console.log "gulp build was successful"
