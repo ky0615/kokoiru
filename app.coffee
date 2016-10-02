@@ -7,6 +7,9 @@ bodyParser = require "body-parser"
 sequelize = require "./models"
 
 app = express()
+server = require('http').createServer(app)
+io = require('socket.io')(server)
+
 env = app.get "env"
 app.use bodyParser()
 
@@ -46,5 +49,30 @@ if env is "development"
 #   sequence "build", ->
 #     console.log "gulp build was successful"
 
-server = app.listen app.get("port"), ->
+io.on "connection", (socket)->
+  console.log "Socket.io is connection!"
+
+
+sequelize.Names.afterCreate (model)->
+  io.emit "changeUserData",
+    status: "create"
+    data: model.dataValues
+sequelize.Names.afterUpdate (model)->
+  io.emit "changeUserData",
+    status: "update"
+    data: model.dataValues
+
+attendUpdateCb = (model)->
+  console.log "hook"
+  console.log model.dataValues
+  io.emit "changeUserStatus", model.dataValues
+sequelize.Attend.afterCreate attendUpdateCb
+sequelize.Attend.afterUpdate attendUpdateCb
+
+server.listen app.get("port"), ->
   console.log "Server listening on pot " + server.address().port
+
+
+
+
+
