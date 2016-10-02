@@ -31,4 +31,34 @@ angular.module("application").service("uuid", function() {
       });
     }
   };
-}]);
+}]).filter("diffTime", function() {
+  return function(date) {
+    var dx, dxAb, now, prefix, time, timeText;
+    if (!date) {
+      return date;
+    }
+    time = new Date(date);
+    now = new Date();
+    dx = now.getTime() - time.getTime();
+    dxAb = dx < 0 ? dx * -1 : dx;
+    prefix = "";
+    timeText = "";
+    dxAb = dxAb / 1000;
+    if (dxAb < 10) {
+      return "今";
+    }
+    if (dxAb < 60) {
+      timeText = Math.floor(dxAb) + "秒";
+    } else if (dxAb < 3600) {
+      timeText = Math.floor(dxAb / 60) + "分";
+    } else if (dxAb < 3600 * 24) {
+      timeText = Math.floor(dxAb / 3600) + "時間";
+    } else if (dxAb < 3600 * 24 * 360) {
+      timeText = Math.floor(dxAb / 3600 / 24) + "日";
+    } else {
+      timeText = Math.floor(dxAb / 3600 / 24 / 360) + "年";
+    }
+    prefix = prefix + (dx < 0 ? "後" : "前");
+    return timeText + prefix;
+  };
+});

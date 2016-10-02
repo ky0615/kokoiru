@@ -4,13 +4,16 @@
     <md-list id="userList">
         <md-list-item
             ng-repeat="(key, value) in users"
-            ng-click="attend(value)"
             ng-class="{now: !value.leftFlag}"
             class="userContent">
             <!-- <pre>{{value|json}}</pre> -->
             <md-icon aria-label="user icon" ng-class="{enableIcon: !value.leftFlag}" class="md-avatar-icon">person</md-icon>
             <p class="userName">
                  {{value.number}}<br>{{value.name}}
+            </p>
+            <p class="md-secondary">
+              <span ng-show="value.leftFlag">{{value.leftAt | diffTime}}</span>
+              <span ng-show="!value.leftFlag">いる(かも)</span>
             </p>
             <md-menu class="md-secondary">
               <md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
