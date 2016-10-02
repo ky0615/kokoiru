@@ -3,15 +3,11 @@ angular.module("application").controller("RootController", ["$rootScope", "$scop
   $scope.toggleList = function() {
     return $mdSidenav("left").toggle();
   };
-  $scope.clickItem = function(item) {
+  return $scope.clickItem = function(item) {
     console.log("click");
     console.log(item);
     return $state.go("main.send", {
       uuid: item.uuid
     });
-  };
-  return $scope.removeItem = function(item) {
-    console.log("remove");
-    return console.log(item);
   };
 }]);

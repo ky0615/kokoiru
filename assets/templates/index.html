@@ -1,35 +1,35 @@
 <div id="main toast-container">
-  <header id="header">
+  <header class="header">
     <h1>User List</h1>
-    <md-list id="userList">
-        <md-list-item
-            ng-repeat="(key, value) in users"
-            ng-class="{now: !value.leftFlag}"
-            class="userContent">
-            <!-- <pre>{{value|json}}</pre> -->
-            <md-icon aria-label="user icon" ng-class="{enableIcon: !value.leftFlag}" class="md-avatar-icon">person</md-icon>
-            <p class="userName">
-                 {{value.number}}<br>{{value.name}}
-            </p>
-            <p class="md-secondary">
-              <span ng-show="value.leftFlag">{{value.leftAt | diffTime}}</span>
-              <span ng-show="!value.leftFlag">いる(かも)</span>
-            </p>
-            <md-menu class="md-secondary">
-              <md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-                <md-icon>menu</md-icon>
-              </md-button>
-              <md-menu-content width="8">
-                <md-menu-item>
-                  <md-button ng-click="switchAttend(value)">
-                    <md-icon md-menu-align-target>exit_to_app</md-icon>
-                    入退出する
-                  </md-button>
-                </md-menu-item>
-              </md-menu-content>
-            </md-menu>
-            <md-divider />
-        </md-list-item>
-    </md-list>
   </header>
+  <md-list id="userList">
+      <md-list-item
+          ng-repeat="(key, value) in users"
+          ng-class="{now: !value.leftFlag}"
+          class="userContent">
+          <!-- <pre>{{value|json}}</pre> -->
+          <md-icon aria-label="user icon" ng-class="{enableIcon: !value.leftFlag}" class="md-avatar-icon">person</md-icon>
+          <p class="userName">
+               {{value.number}}<br>{{value.name}}
+          </p>
+          <p class="md-secondary">
+            <span ng-show="value.leftFlag">{{value.leftAt | diffTime}}</span>
+            <span ng-show="!value.leftFlag">いる(かも)</span>
+          </p>
+          <md-menu class="md-secondary">
+            <md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+              <md-icon>menu</md-icon>
+            </md-button>
+            <md-menu-content width="8">
+              <md-menu-item>
+                <md-button ng-click="switchAttend(value)">
+                  <md-icon md-menu-align-target>exit_to_app</md-icon>
+                  入退出する
+                </md-button>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
+          <md-divider />
+      </md-list-item>
+  </md-list>
 </div>

@@ -50,8 +50,6 @@ md-sidenav md-list {
 }
 
 #content {
-  padding-left: 40px;
-  padding-right: 40px;
   padding-top: 5px;
 }
 
@@ -132,6 +130,13 @@ span.name {
   font-weight: bold;
   font-size: 1.1em;
   padding-left: 5px;
+}
+
+.header {
+  h1 {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
 
 #userList {

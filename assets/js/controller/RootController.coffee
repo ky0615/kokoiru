@@ -9,7 +9,3 @@ angular.module "application"
     console.log item
     $state.go "main.send", 
       uuid:item.uuid
-
-  $scope.removeItem = (item)->
-    console.log "remove"
-    console.log item
