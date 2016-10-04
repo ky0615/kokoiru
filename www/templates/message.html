@@ -1,8 +1,22 @@
-<md-content>
-  <section layout="row" layout-sm="column" layout-wrap>
-    aaa
-  </section>
-  <section layout="row" layout-sm="column" layout-wrap>
-    aaa
-  </section>
+<md-content id="message">
+  <div class="textList">
+    <header class="header">
+      <h1>ひとことめっせーじ</h1>
+    </header>
+    <section>
+      <p>いまつくってる</p>
+    </section>
+  </div>
+  <form name="userForm">
+    <div class="textBox" md-theme="messageTextBox">
+      <div layout="row">
+        <md-input-container md-no-float class="md-block" flex="80">
+        <input ng-model="user.message" md-select-on-focus/>
+        </md-input-container>
+        <section flex="20">
+          <md-button class="md-raised md-primary" id="sendButton" type="submit" ng-click="sendMessage(user)">そーしん</md-button>
+        </section>
+      </div>
+    </div>
+  </form>
 </md-content>

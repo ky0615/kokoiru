@@ -1,1 +1,0 @@
-angular.module("application").controller("SendController", ["$rootScope", "$scope", "$stateParams", "$http", "$mdSidenav", "$timeout", "firebase", "$mdDialog", "$mdToast", function($rootScope, $scope, $stateParams, $http, $mdSidenav, $timeout, firebase, $mdDialog, $mdToast) {}]);

@@ -33,10 +33,9 @@
         md-component-id="left"
         ng-click="toggleList()">
         <md-list>
-          <md-subheader class="md-no-sticky">Single Action Checkboxes</md-subheader>
-          <md-list-item ng-repeat="item in sendList" ng-click="clickItem(item)">
+          <md-subheader class="md-no-sticky">めにゅー</md-subheader>
+          <md-list-item ng-repeat="item in pageList" ng-click="clickItem(item)">
             <p>{{item.name}}</p>
-            <md-button class="menu md-icon-button md-secondary" ng-click="removeItem(item)" aria-label="remove"><md-icon>delete</md-icon></md-button>
           </md-list-item>
         </md-list>
       </md-sidenav>

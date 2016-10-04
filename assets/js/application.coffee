@@ -1,6 +1,10 @@
 angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap"]
 .config ($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider)->
   $mdThemingProvider.theme('default').dark()
+  $mdThemingProvider.theme('messageTextBox')
+    .primaryPalette('pink')
+    .accentPalette('orange')
+  # $mdThemingProvider.theme('messageTextBox').dark false
 
   $locationProvider.html5Mode true
   $stateProvider
@@ -8,18 +12,14 @@ angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.rou
     url: '/'
     templateUrl: 'templates/index.html'
     controller: 'IndexController'
+  .state "message",
+    url: "/message"
+    templateUrl: "templates/message.html"
+    controller: "MessageController"
   .state "main",
     abstract: true,
     templateUrl: 'templates/main.html'
     controller: 'MainController'
-  .state "main.send",
-    url: '/send/:uuid'
-    templateUrl: 'templates/send.html'
-    controller: 'SendController'
-  .state "main.scan",
-    url: '/scan'
-    templateUrl: 'templates/scan.html'
-    controller: 'ScanController'
   .state "404",
     templateUrl: "templates/error.html"
     controller: "ErrorController"

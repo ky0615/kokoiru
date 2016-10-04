@@ -7,7 +7,6 @@
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  height: 100%;
   margin: 0px;
   padding: 0px;
 }
@@ -139,6 +138,10 @@ span.name {
   }
 }
 
+#content {
+  min-height: 100%;
+}
+
 #userList {
   .userContent {
     .userName {
@@ -148,5 +151,41 @@ span.name {
       background-color: #64B5F6 !important;
       // color: #64B5F6;
     }
+  }
+}
+
+#message {
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+
+  .textList {
+    height: calc(100% - 45px);
+    overflow-y: auto;
+  }
+
+  .textBox {
+    color: #000000;
+    background-color: #FFFFFF;
+    width: 100%;
+    // height: 45px;
+    bottom: 0;
+    md-input-container {
+      margin: 0 0 !important;
+    }
+  }
+
+  // md-input-container {
+  //   margin-top: 5px;
+  //   margin-bottom: 5px;
+  // }
+
+  #sendButton {
+    height: 36px;
+    margin-top: 4px;
   }
 }
