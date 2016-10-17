@@ -31,6 +31,10 @@ attend = require("./router/attend")(sequelize)
 app.get '/attend', attend.index
 app.post '/attend', attend.create
 
+chat = require("./router/chat")(sequelize)
+app.get "/chat", chat.index
+app.post "/chat", chat.create
+
 app.get /^\/(js|css|min)\/(.*)/, (req, res)->
   res.status(404).send("404 Not found")
 
@@ -60,6 +64,10 @@ sequelize.Names.afterCreate (model)->
 sequelize.Names.afterUpdate (model)->
   io.emit "changeUserData",
     status: "update"
+    data: model.dataValues
+sequelize.Chat.afterCreate (model)->
+  io.emit "changeChatData",
+    status: "add"
     data: model.dataValues
 
 attendUpdateCb = (model)->

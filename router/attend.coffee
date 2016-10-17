@@ -26,7 +26,7 @@ module.exports = (sequelize)->
                 Attend.find
                     where:
                         userId: user.id
-                    order:　"createdAt DESC"
+                    order: "createdAt DESC"
                 .then (attend)->
                     if attend is null or attend.leftFlag
                         return Attend.create
