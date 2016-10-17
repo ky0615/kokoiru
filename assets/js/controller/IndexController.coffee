@@ -6,6 +6,10 @@ angular.module "application"
   $scope.attend = (user)->
     console.log user
 
+  $scope.sortUsers = ->
+    $scope.users.sort (a,b)->
+      return a.leftFlag
+
   $scope.switchAttend = (user)->
     $http.post "/attend", user
       .success (result)->
@@ -18,6 +22,7 @@ angular.module "application"
   $http.get "/users"
   .success (result)->
     $scope.users = result
+    $scope.sortUsers()
 
   socketio.on "changeUserStatus", (data)->
     console.log data
@@ -25,6 +30,7 @@ angular.module "application"
     if updateUser
       updateUser.leftAt = data.leftAt
       updateUser.leftFlag = data.leftFlag
+    $scope.sortUsers()
 
   socketio.on "changeUserData", (data)->
     console.log data
@@ -36,6 +42,7 @@ angular.module "application"
         if updateUser
           updateUser.name = data.data.name
           updateUser.number = data.data.number
+    $scope.sortUsers()
   socketio.on "disconnect", ->
     console.log "disconnect"
 
