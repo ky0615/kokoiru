@@ -8,6 +8,8 @@ angular.module "application"
 
   $scope.sortUsers = ->
     $scope.users.sort (a,b)->
+      if b.leftFlag
+        return -1
       return a.leftFlag
 
   $scope.switchAttend = (user)->

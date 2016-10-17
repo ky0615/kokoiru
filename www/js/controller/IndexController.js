@@ -7,6 +7,9 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
   };
   $scope.sortUsers = function() {
     return $scope.users.sort(function(a, b) {
+      if (b.leftFlag) {
+        return -1;
+      }
       return a.leftFlag;
     });
   };
