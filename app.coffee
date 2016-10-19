@@ -30,6 +30,7 @@ app.delete '/users/:id', users.destroy
 attend = require("./router/attend")(sequelize)
 app.get '/attend', attend.index
 app.post '/attend', attend.create
+app.get '/attend/leavingAll', attend.leavingAll
 
 chat = require("./router/chat")(sequelize)
 app.get "/chat", chat.index
@@ -76,6 +77,9 @@ attendUpdateCb = (model)->
   io.emit "changeUserStatus", model.dataValues
 sequelize.Attend.afterCreate attendUpdateCb
 sequelize.Attend.afterUpdate attendUpdateCb
+sequelize.Attend.afterBulkUpdate (model)->
+  console.log "hook"
+  io.emit "reloadUserStatus", {}
 
 server.listen app.get("port"), ->
   console.log "Server listening on pot " + server.address().port

@@ -1,6 +1,7 @@
 module.exports = (sequelize)->
     Names = sequelize.Names
     Attend = sequelize.Attend
+    Sequelize = sequelize.Sequelize
     return {
         index: (req, res)->
             # showing the list
@@ -39,4 +40,16 @@ module.exports = (sequelize)->
                 res.send result
             .catch (err)->
                 res.send err
+        leavingAll: (req, res)->
+            Attend.update
+                leftFlag: 1
+                leftAt: new Date()
+            ,
+                where:
+                    leftFlag: 0
+            .then (result)->
+                console.log result
+                res.send
+                    status: "success"
+
     }

@@ -21,10 +21,12 @@ angular.module "application"
     originatorEv = ev
     $mdOpenMenu ev
 
-  $http.get "/users"
-  .success (result)->
-    $scope.users = result
-    $scope.sortUsers()
+  $scope.loadUserList = ->
+    $http.get "/users"
+    .success (result)->
+      $scope.users = result
+      $scope.sortUsers()
+  $scope.loadUserList()
 
   socketio.on "changeUserStatus", (data)->
     console.log data
@@ -45,6 +47,11 @@ angular.module "application"
           updateUser.name = data.data.name
           updateUser.number = data.data.number
     $scope.sortUsers()
+
+  socketio.on "reloadUserStatus", (data)->
+    console.log "reloadUserStatus"
+    $scope.loadUserList()
+
   socketio.on "disconnect", ->
     console.log "disconnect"
 

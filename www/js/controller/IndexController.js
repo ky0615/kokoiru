@@ -22,10 +22,13 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
     originatorEv = ev;
     return $mdOpenMenu(ev);
   };
-  $http.get("/users").success(function(result) {
-    $scope.users = result;
-    return $scope.sortUsers();
-  });
+  $scope.loadUserList = function() {
+    return $http.get("/users").success(function(result) {
+      $scope.users = result;
+      return $scope.sortUsers();
+    });
+  };
+  $scope.loadUserList();
   socketio.on("changeUserStatus", function(data) {
     var updateUser;
     console.log(data);
@@ -55,6 +58,10 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
         }
     }
     return $scope.sortUsers();
+  });
+  socketio.on("reloadUserStatus", function(data) {
+    console.log("reloadUserStatus");
+    return $scope.loadUserList();
   });
   return socketio.on("disconnect", function() {
     return console.log("disconnect");
