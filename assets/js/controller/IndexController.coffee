@@ -9,11 +9,9 @@ angular.module "application"
   $scope.sortUsers = ->
     $scope.setDiffTimeData()
     $scope.users.sort (a,b)->
-      if b.leftFlag
-        if a.leftFlag
-          return new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime()
-        else return -1
-      return a.leftFlag
+      if b.leftFlag and a.leftFlag
+        return if new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime() then 1 else -1
+      return if b.leftFlag then -1 else 1
 
   $scope.getDiffTime = (date)->
     unless date

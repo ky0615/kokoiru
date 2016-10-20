@@ -8,14 +8,18 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
   $scope.sortUsers = function() {
     $scope.setDiffTimeData();
     return $scope.users.sort(function(a, b) {
-      if (b.leftFlag) {
-        if (a.leftFlag) {
-          return new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime();
+      if (b.leftFlag && a.leftFlag) {
+        if (new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime()) {
+          return 1;
         } else {
           return -1;
         }
       }
-      return a.leftFlag;
+      if (b.leftFlag) {
+        return -1;
+      } else {
+        return 1;
+      }
     });
   };
   $scope.getDiffTime = function(date) {
