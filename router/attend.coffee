@@ -14,6 +14,11 @@ module.exports = (sequelize)->
             .then (result)->
                 res.send result
         create: (req, res)->
+            console.log req.body
+            unless req.body.number
+              res.send
+                status: "色々と足りない"
+              return
             Names.find
                 where:
                     number: req.body.number
