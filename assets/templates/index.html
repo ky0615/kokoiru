@@ -14,7 +14,7 @@
                {{value.number}}<br>{{value.name}}
           </p>
           <p class="md-secondary">
-            <span ng-show="value.leftFlag">{{value.leftAt | diffTime}}</span>
+            <span ng-show="value.leftFlag">{{value.diff}}</span>
             <span ng-show="!value.leftFlag">いる(かも)</span>
           </p>
           <md-button aria-label="Open user menu" class="md-icon-button md-secondary" ng-click="openMenu($event, value)">
