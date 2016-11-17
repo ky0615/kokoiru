@@ -1,5 +1,5 @@
 angular.module "application"
-.controller "IndexController", ($rootScope, $scope, $http, $mdSidenav, $mdToast, socketio)->
+.controller "IndexController", ($rootScope, $scope, $http, $mdSidenav, $mdToast, $mdDialog, socketio)->
   $scope.users = []
   originatorEv = undefined
 
@@ -17,10 +17,21 @@ angular.module "application"
       .success (result)->
         $mdToast.showSimple "Change attend status was successful!"
 
-  $scope.openMenu = ($mdOpenMenu, ev)->
-    originatorEv = ev
-    $mdOpenMenu ev
+  $scope.openMenu = (ev, user)->
+    # originatorEv = ev
+    # $mdOpenMenu ev
+    $scope.openUserStatus ev, user
 
+  $scope.openUserStatus = (ev, user)->
+    $mdDialog.show
+      controller: "UserStatusModalController"
+      templateUrl: "templates/userStatusModal.html"
+      targetEvent: ev
+      clickOutsideToClose: true
+      locals:
+        user: user
+    .then (res)->
+      console.log res
   $scope.loadUserList = ->
     $http.get "/users"
     .success (result)->

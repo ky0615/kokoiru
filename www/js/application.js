@@ -1,4 +1,4 @@
-angular.module("application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap"]).config(["$stateProvider", "$locationProvider", "$urlRouterProvider", "$mdThemingProvider", function($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider) {
+angular.module("application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap", "calHeatmap"]).config(["$stateProvider", "$locationProvider", "$urlRouterProvider", "$mdThemingProvider", function($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider) {
   $mdThemingProvider.theme('default').dark();
   $mdThemingProvider.theme('messageTextBox').primaryPalette('pink').accentPalette('orange');
   $locationProvider.html5Mode(true);

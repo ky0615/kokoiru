@@ -1,4 +1,4 @@
-angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap"]
+angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.router", "ui.bootstrap", "calHeatmap"]
 .config ($stateProvider, $locationProvider, $urlRouterProvider, $mdThemingProvider)->
   $mdThemingProvider.theme('default').dark()
   $mdThemingProvider.theme('messageTextBox')
@@ -28,4 +28,3 @@ angular.module "application", ["ngMaterial", "ngResource", "ngMessages", "ui.rou
   $urlRouterProvider
   .otherwise ($injector)->
     $injector.get("$state").go("404");
-

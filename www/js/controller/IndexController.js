@@ -1,4 +1,4 @@
-angular.module("application").controller("IndexController", ["$rootScope", "$scope", "$http", "$mdSidenav", "$mdToast", "socketio", function($rootScope, $scope, $http, $mdSidenav, $mdToast, socketio) {
+angular.module("application").controller("IndexController", ["$rootScope", "$scope", "$http", "$mdSidenav", "$mdToast", "$mdDialog", "socketio", function($rootScope, $scope, $http, $mdSidenav, $mdToast, $mdDialog, socketio) {
   var originatorEv;
   $scope.users = [];
   originatorEv = void 0;
@@ -18,9 +18,21 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
       return $mdToast.showSimple("Change attend status was successful!");
     });
   };
-  $scope.openMenu = function($mdOpenMenu, ev) {
-    originatorEv = ev;
-    return $mdOpenMenu(ev);
+  $scope.openMenu = function(ev, user) {
+    return $scope.openUserStatus(ev, user);
+  };
+  $scope.openUserStatus = function(ev, user) {
+    return $mdDialog.show({
+      controller: "UserStatusModalController",
+      templateUrl: "templates/userStatusModal.html",
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      locals: {
+        user: user
+      }
+    }).then(function(res) {
+      return console.log(res);
+    });
   };
   $scope.loadUserList = function() {
     return $http.get("/users").success(function(result) {

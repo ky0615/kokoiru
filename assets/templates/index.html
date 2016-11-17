@@ -6,6 +6,7 @@
       <md-list-item
           ng-repeat="(key, value) in users"
           ng-class="{now: !value.leftFlag}"
+          ng-click="openMenu($event, value)"
           class="userContent">
           <!-- <pre>{{value|json}}</pre> -->
           <md-icon aria-label="user icon" ng-class="{enableIcon: !value.leftFlag}" class="md-avatar-icon">person</md-icon>
@@ -16,19 +17,9 @@
             <span ng-show="value.leftFlag">{{value.leftAt | diffTime}}</span>
             <span ng-show="!value.leftFlag">いる(かも)</span>
           </p>
-          <md-menu class="md-secondary">
-            <md-button aria-label="Open user menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-              <md-icon>menu</md-icon>
-            </md-button>
-            <md-menu-content width="8">
-              <md-menu-item>
-                <md-button ng-click="switchAttend(value)">
-                  <md-icon md-menu-align-target>exit_to_app</md-icon>
-                  入退出する
-                </md-button>
-              </md-menu-item>
-            </md-menu-content>
-          </md-menu>
+          <md-button aria-label="Open user menu" class="md-icon-button md-secondary" ng-click="openMenu($event, value)">
+            <md-icon>menu</md-icon>
+          </md-button>
           <md-divider />
       </md-list-item>
   </md-list>
