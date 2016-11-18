@@ -10,30 +10,27 @@
       </div>
     </md-toolbar>
   </div>
-  <div class="heatMap">
-    <cal-heatmap config="heat"></cal-heatmap>
-  </div>
-  <md-button class="md-raised" ng-click="switchAttend(user)" ng-show="user.leftFlag == true">入室する</md-button>
-  <md-button class="md-raised" ng-click="switchAttend(user)" ng-show="user.leftFlag == false">退出する</md-button>
-
-  <form name="changeUser">
-    <md-input-container class="md-block">
-      <label>Name</label>
-      <input type="text" ng-model="changeUser.name">
-    </md-input-container>
-  </form>
-  <pre>
-  {{user | json}}
-  </pre>
-
-  <pre>
-  {{changeUser | json}}
-  </pre>
-
-  <pre>
-  {{changeUser | json}}
-  </pre>
-  <pre>
-  {{changeUser | json}}
-  </pre>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div class="heatMap">
+        <cal-heatmap config="heat"></cal-heatmap>
+      </div>
+      <md-button class="md-raised" ng-click="switchAttend(user)" ng-show="user.leftFlag == true">入室する</md-button>
+      <md-button class="md-raised" ng-click="switchAttend(user)" ng-show="user.leftFlag == false">退出する</md-button>
+      <md-button class="md-raised" ng-click="switchChangeUserInfo($event)">個人情報を{{showChangeInfo?"保存":"変更"}}する</md-button>
+      <form name="changeUserValid" ng-show="showChangeInfo">
+        <md-input-container class="md-block">
+          <label>Name</label>
+          <input type="text" ng-model="changeUser.name" required>
+        </md-input-container>
+        <md-input-container class="md-block">
+          <label>学籍番号</label>
+          <input type="text" ng-model="changeUser.number" required>
+        </md-input-container>
+      </form>
+      <h2>Debug Log</h2>
+      <pre>{{user | json}}</pre>
+      <pre>{{changeUserValid | json}}</pre>
+    </div>
+  </md-dialog-content>
 </md-dialog>
