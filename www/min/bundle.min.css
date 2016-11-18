@@ -33531,6 +33531,10 @@ span.name {
   background-color: #64B5F6 !important;
 }
 
+.heatMap cal-heatmap {
+  overflow: auto;
+}
+
 #message {
   width: 100%;
   position: absolute;

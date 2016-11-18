@@ -1,3 +1,4 @@
+_ = require "lodash"
 module.exports = (sequelize)->
     Names = sequelize.Names
     Attend = sequelize.Attend
@@ -13,6 +14,42 @@ module.exports = (sequelize)->
                 # group: "leftFlag"
             .then (result)->
                 res.send result
+        heatMap: (req, res)->
+            unless req?.params?.id
+                res.status 500
+                .send [
+                    message: "Argument must be number"
+                ]
+                return
+            Names.find
+                where:
+                    $or:[
+                        number: req.params.id
+                    ,
+                        id: req.params.id
+                    ]
+            .then (result)->
+                unless result
+                    res.status 404
+                    .send errors: [
+                        message: "#{req.params.id} is not found"
+                    ]
+                    return
+                Attend.findAll
+                    where: userId: result.id
+            .then (result)->
+                val = _.map result, (val)->
+                  Math.floor(new Date(val.createdAt).getTime() / 1000)
+                res.send _.reduce val, (result, val)->
+                    if not _.isObject result
+                      re = {}
+                      re[result] = 1
+                      return re
+                    result[val] = 1
+                    result
+            .catch (err)->
+                res.status 404
+                .send errors: err.errors
         create: (req, res)->
             console.log req.body
             unless req.body.number

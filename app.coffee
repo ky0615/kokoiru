@@ -28,6 +28,7 @@ app.put '/users/:id', users.update
 app.delete '/users/:id', users.destroy
 
 attend = require("./router/attend")(sequelize)
+app.get '/attend/:id/heatmap', attend.heatMap
 app.get '/attend', attend.index
 app.post '/attend', attend.create
 app.get '/attend/leavingAll', attend.leavingAll

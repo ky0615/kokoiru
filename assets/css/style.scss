@@ -154,6 +154,13 @@ span.name {
   }
 }
 
+.heatMap {
+
+  cal-heatmap {
+    overflow: auto;
+  }
+}
+
 #message {
   width: 100%;
   position: absolute;
