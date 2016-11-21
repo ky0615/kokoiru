@@ -18,6 +18,10 @@ html, body {
 md-toolbar h1 {
   margin: auto; }
 
+.boadingRate {
+  margin-left: 20px;
+  margin-right: 20px; }
+
 /* Sidenav area */
 md-list .md-button {
   color: inherit;

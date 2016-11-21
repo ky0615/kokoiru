@@ -2,12 +2,19 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
   var originatorEv;
   $scope.users = [];
   originatorEv = void 0;
+  $scope.boadingRate = {
+    rate: 0,
+    capacity: 6
+  };
+  $scope.updateBoadingRate = function(activeNum) {
+    return $scope.boadingRate.rate = Math.floor(activeNum / $scope.boadingRate.capacity * 100);
+  };
   $scope.attend = function(user) {
     return console.log(user);
   };
   $scope.sortUsers = function() {
     $scope.setDiffTimeData();
-    return $scope.users.sort(function(a, b) {
+    $scope.users.sort(function(a, b) {
       if (b.leftFlag && a.leftFlag) {
         if (new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime()) {
           return 1;
@@ -21,6 +28,9 @@ angular.module("application").controller("IndexController", ["$rootScope", "$sco
         return 1;
       }
     });
+    return $scope.updateBoadingRate($scope.users.filter(function(val) {
+      return !val.leftFlag;
+    }).length);
   };
   $scope.getDiffTime = function(date) {
     var dx, dxAb, now, prefix, time, timeText;

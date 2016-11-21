@@ -3,6 +3,13 @@ angular.module "application"
   $scope.users = []
   originatorEv = undefined
 
+  $scope.boadingRate =
+    rate: 0
+    capacity: 6
+
+  $scope.updateBoadingRate = (activeNum)->
+    $scope.boadingRate.rate = Math.floor activeNum / $scope.boadingRate.capacity * 100
+
   $scope.attend = (user)->
     console.log user
 
@@ -12,6 +19,7 @@ angular.module "application"
       if b.leftFlag and a.leftFlag
         return if new Date(a.leftAt).getTime() < new Date(b.leftAt).getTime() then 1 else -1
       return if b.leftFlag then -1 else 1
+    $scope.updateBoadingRate $scope.users.filter((val)-> !val.leftFlag).length
 
   $scope.getDiffTime = (date)->
     unless date

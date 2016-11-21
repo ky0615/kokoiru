@@ -2,6 +2,9 @@
   <header class="header">
     <h1>人のいちらん</h1>
   </header>
+  <h3 class="boadingRate">
+    乗車率：{{boadingRate.rate}}% (定員：{{boadingRate.capacity}})
+  </h3>
   <md-list id="userList">
       <md-list-item
           ng-repeat="(key, value) in users"
