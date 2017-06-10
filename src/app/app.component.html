@@ -1,0 +1,16 @@
+<md-toolbar color="primary">
+  <button class="app-icon-button" (click)="sidenav.toggle()"><i class="material-icons app-toolbar-menu">menu</i></button>
+  ここいるv2
+</md-toolbar>
+<md-sidenav-container>
+  <md-sidenav #sidenav mode="side" opened="true" class="sidenav">
+    <!-- sidenav content -->
+
+    <span>sidenav!</span>
+  </md-sidenav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- primary content -->
+</md-sidenav-container>

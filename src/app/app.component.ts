@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MdSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>
-      {{title}}
-    </h1>
-    <router-outlet></router-outlet>
-  `,
+  templateUrl: './app.component.html',
   styles: []
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements AfterViewInit {
+
+  @ViewChild('sidenav')
+  side: MdSidenav;
+
+  ngAfterViewInit(): void {
+
+  };
 }
