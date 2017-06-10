@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MdSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,6 @@ import { MdSidenav } from '@angular/material';
   styles: []
 })
 export class AppComponent implements AfterViewInit {
-
-  @ViewChild('sidenav')
-  side: MdSidenav;
-
   ngAfterViewInit(): void {
 
   };
