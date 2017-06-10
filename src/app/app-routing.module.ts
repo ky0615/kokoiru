@@ -1,25 +1,25 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found.component';
-import { MainComponent } from './main/main.component';
-import { ListComponent } from './main/list/list.component';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { PageNotFoundComponent } from "./page-not-found.component";
+import { MainComponent } from "./main/main.component";
+import { ListComponent } from "./main/list/list.component";
 
 const routes: Routes = [
   {
-    path: '', // TODO: login page
-    redirectTo: 'list',
-    pathMatch: 'full'
+    path: "", // TODO: login page
+    redirectTo: "list",
+    pathMatch: "full"
   },
   {
-    path: 'list',
+    path: "list",
     component: MainComponent,
     children: [{
-      path: '',
+      path: "",
       component: ListComponent
     }]
   },
   {
-    path: '**',
+    path: "**",
     component: PageNotFoundComponent
   }
 ];

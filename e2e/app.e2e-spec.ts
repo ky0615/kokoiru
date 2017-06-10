@@ -1,14 +1,14 @@
-import { KokoiruPage } from './app.po';
+import { KokoiruPage } from "./app.po";
 
-describe('kokoiru App', () => {
+describe("kokoiru App", () => {
   let page: KokoiruPage;
 
   beforeEach(() => {
     page = new KokoiruPage();
   });
 
-  it('should display welcome message', () => {
+  it("should display welcome message", () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual("Welcome to app!!");
   });
 });
