@@ -15,12 +15,6 @@
       env_production : {
         NODE_ENV: "production"
       }
-    },
-
-    // Second application
-    {
-      name      : "reader",
-      script    : "../cardReader/card.coffee"
     }
   ],
 
